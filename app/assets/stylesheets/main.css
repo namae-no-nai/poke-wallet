@@ -1,0 +1,17 @@
+.nav-color {
+    background-color: #2a75bb;
+}
+
+.toggler-color {
+    background-color: #ffcb05;
+    color: black;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #263238;
+    text-align: center;
+}

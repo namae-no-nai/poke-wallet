@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :investors
 
-  root "home#index"
+  root to: 'home#index'
 end
