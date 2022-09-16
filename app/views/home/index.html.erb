@@ -1,3 +1,18 @@
 <div>
-    <h5> Hello World </h5>
+    <h5> Choose your pokemon </h5>
+</div>
+<div>
+  <%= form_with url: "/home", method: :post do |form| %>
+    <%= form.label :pokemon, "Search for:" %>
+    <%= form.text_field :pokemon %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
+<div>
+    Your current pokemons
+    <% @purchases.each do |purchase| %>
+      <%= purchase.pokemon_id %>
+      <%= purchase.pokemon_name %>
+      <%= purchase.base_experience %>
+    <% end %>
 </div>
