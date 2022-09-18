@@ -4,6 +4,7 @@ require 'httparty'
 class HomeController < ApplicationController
   include HTTParty
   before_action :authenticate_investor!
+  before_action :set_purchase, only: %i[destroy]
 
   def index
     @purchases = Purchase.where(investor_id: current_investor)
@@ -15,10 +16,15 @@ class HomeController < ApplicationController
     @purchase.investor = current_investor
   
     if @purchase.save
-      redirect_to home_index_path, flash: { notice: 'Pokemon bought successfully' }
+      redirect_to home_index_path, flash: { notice: 'Pokemon was bought successfully' }
     else
       redirect_to home_index_path, flash: { error: "Pokemon couldn't be bought" }
     end
+  end
+
+  def destroy
+    @purchase.destroy
+    redirect_to home_index_path, flash: { notice: 'Pokemon was sold successfully' }
   end
 
   private
@@ -42,5 +48,9 @@ class HomeController < ApplicationController
       :pokemon_id => pokemon_data['id'],
       :base_experience => pokemon_data['base_experience']
     }
+  end
+
+  def set_purchase
+    @purchase = Purchase.find(params[:id])
   end
 end

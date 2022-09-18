@@ -4,15 +4,29 @@
 <div>
   <%= form_with url: "/home", method: :post do |form| %>
     <%= form.label :pokemon, "Search for:" %>
-    <%= form.text_field :pokemon %>
-    <%= form.submit "Search" %>
+    <%= form.text_field :pokemon, placeholder: 'name or id' %>
+    <%= form.submit "BUY", class: 'btn btn-primary' %>
   <% end %>
 </div>
 <div>
-    Your current pokemons
-    <% @purchases.each do |purchase| %>
-      <%= purchase.pokemon_id %>
-      <%= purchase.pokemon_name %>
-      <%= purchase.base_experience %>
-    <% end %>
+   <h4>Your current pokemons</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID (national dex)</th>
+        <th scope="col">Pokemon</th>
+        <th scope="col">Base experience</th>
+        <th scope="col">Sell</th>
+      </tr>
+      <% @purchases.each do |purchase| %>
+        <tr>
+          <td><%= purchase.pokemon_id %></td>
+          <td><%= purchase.pokemon_name.capitalize %></td>
+          <td><%= purchase.base_experience %></td>
+          <td><%= button_to 'Sell', home_path(purchase), method: :delete, class: 'btn btn-sm btn-danger'  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>
