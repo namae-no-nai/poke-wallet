@@ -1,0 +1,19 @@
+<h3>Purchases and Sales Record</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID (national dex)</th>
+      <th scope="col">Pokemon</th>
+      <th scope="col">Transaction value USD</th>
+      <th scope="col">Date</th>
+    </tr>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.pokemon_id %></td>
+        <td><%= log.pokemon_name.capitalize %></td>
+        <td><%= log.usd_value %></td>
+        <td><%= log.created_at %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

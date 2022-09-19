@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   resources :home, only: %i[index create destroy]
 
+  get '/logs', to: 'home#logs'
+
   root to: 'home#index'
 end
