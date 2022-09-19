@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_220209) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_16_014738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,5 +36,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_220209) do
     t.index ["investor_id"], name: "index_purchases_on_investor_id"
   end
 
+  create_table "wallet_logs", force: :cascade do |t|
+    t.integer "pokemon_id"
+    t.string "pokemon_name"
+    t.decimal "usd_value", precision: 9, scale: 6
+    t.bigint "investor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id"], name: "index_wallet_logs_on_investor_id"
+  end
+
   add_foreign_key "purchases", "investors"
+  add_foreign_key "wallet_logs", "investors"
 end
