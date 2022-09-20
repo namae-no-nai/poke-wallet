@@ -1,5 +1,18 @@
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  add_filter 'test/'
+  add_filter 'config/'
+  add_filter 'vendor/'
+  add_filter 'mod_db.rb'  # One use methods for modifying the database
+
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Views', 'app/views'
+  add_group 'Library', 'lib/my_lib'
+end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

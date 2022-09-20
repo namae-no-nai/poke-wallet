@@ -11,6 +11,7 @@ development:
   host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
   port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
 
+test:
   <<: *default
   database: poke_wallet_test
 

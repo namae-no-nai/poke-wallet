@@ -67,8 +67,6 @@ usuário consiga controlar a valoração de sua carteira.
 
 * rails '7.0.3.1'
 
-  
-* factory_bot_rails, para auxiliar na criação de testes
 
 * rspec-rails, para a execução de testes
 
