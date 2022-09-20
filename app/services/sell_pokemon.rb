@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class SellPokemon
   def self.call(purchase)
-    self.new(purchase).sell_pokemon
+    new(purchase).sell_pokemon
   end
 
   def initialize(purchase)
@@ -8,7 +10,7 @@ class SellPokemon
     @errors = []
     @purchase = purchase
   end
-  
+
   def sell_pokemon
     add_log
     @purchase.destroy
@@ -25,12 +27,12 @@ class SellPokemon
       usd_value: UpdatePokemonPrices.price_build(@purchase.base_experience * -1)
     )
   end
- 
+
   def response
     {
       success: @success,
       errors: @errors,
-      pokemon: @pokemon,
+      pokemon: @pokemon
     }
-  end 
+  end
 end
