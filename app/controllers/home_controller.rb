@@ -11,7 +11,14 @@ class HomeController < ApplicationController
 
   def create
     pokemon = Utils::PokeApi.fetch_pokemon(params[:pokemon])
-    CreatePokemon.call(pokemon, current_investor)
+    return redirect_to '/', alert: 'Purchase failed!' if pokemon == 'Not Found'
+    
+    outcome = CreatePokemon.call(pokemon, current_investor)
+    if outcome[:success]
+      redirect_to '/', notice: 'Pokemon bought successfully!'
+    else
+      redirect_to '/', alert: 'Purchase failed!'
+    end
   end
 
   def logs
@@ -20,7 +27,12 @@ class HomeController < ApplicationController
 
   # class DestroyPokemon
   def destroy
-    SellPokemon.call(@purchase)
+    outcome = SellPokemon.call(@purchase)
+    if outcome[:success]
+      redirect_to '/', notice: 'Pokemon sold successfylly!'
+    else
+      redirect_to '/', alert: 'Pokemon was not sold!'
+    end
   end
 
   private
