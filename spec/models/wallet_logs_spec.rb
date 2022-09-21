@@ -2,13 +2,12 @@
 
 require 'rails_helper'
 
-RSpec.describe Purchase, type: :model do
+RSpec.describe WalletLog, type: :model do
   subject do
-    Purchase.new(
+    WalletLog.new(
       investor_id: '1',
       pokemon_id: '1',
       pokemon_name: 'bulbasaur',
-      base_experience: 123,
       usd_value: 123.12345
     )
   end
@@ -26,11 +25,6 @@ RSpec.describe Purchase, type: :model do
 
   it 'pokemon_name should be present' do
     subject.pokemon_name = nil
-    expect(subject).to_not be_valid
-  end
-
-  it 'base_experience should be present' do
-    subject.base_experience = nil
     expect(subject).to_not be_valid
   end
 
