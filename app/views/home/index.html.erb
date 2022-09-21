@@ -16,6 +16,7 @@
         <th scope="col">ID (national dex)</th>
         <th scope="col">Pokemon</th>
         <th scope="col">Price (USD)</th>
+        <th scope="col">Date</th>
         <th scope="col">Sell</th>
       </tr>
       <% @purchases.each do |purchase| %>
@@ -23,6 +24,7 @@
           <td><%= purchase.pokemon_id %></td>
           <td><%= purchase.pokemon_name.capitalize %></td>
           <td><%= purchase.usd_value %></td>
+          <td><%= purchase.created_at %></td>
           <td><%= button_to 'Sell', home_path(purchase), method: :delete, class: 'btn btn-sm btn-danger'  %></td>
         </tr>
       <% end %>
