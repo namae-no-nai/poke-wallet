@@ -20,3 +20,4 @@ production:
   database: poke_wallet_production
   username: poke_wallet
   password: <%= ENV["POKE_WALLET_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
